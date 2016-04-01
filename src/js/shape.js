@@ -2,8 +2,7 @@
 import React, { PropTypes } from 'react';
 
 
-
-export const USER_SHAPE = PropTypes.shape({
+export default  PropTypes.shape({
   name: PropTypes.string.isRequired,
   email: PropTypes.string.isRequired,
   phone: PropTypes.string.isRequired,

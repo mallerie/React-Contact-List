@@ -1,32 +1,34 @@
 //Page with selected user displaying all their contact info.
 import React, { Component, PropTypes } from 'react';
-import { tempUser } from './user_data';
-import { USER_SHAPE } from './shape'
+import USER_SHAPE from './shape';
+import Icon from './icon';
 
 export default class UserDetails extends Component {
 
  static propTypes = {
-  tempUser: USER_SHAPE,
+  user: USER_SHAPE,
   goBack: PropTypes.func.isRequired
  }
 
   render() {
-    let { goBack, tempUser } = this.props;
+    let { goBack, user } = this.props;
     return (
     <div className="user-details">
       <div className="avatar">
-        <button onClick={goBack}></button>
-        <img src={tempUser.photo} alt={tempUser.name}/>
+        <button onClick={goBack}><Icon type="arrow-left"/></button>
+        <img src={user.photo} alt={user.name}/>
         <ul>
-          <li>{tempUser.name}</li>
-          <li>{tempUser.email}</li>
-          <li>{tempUser.phone}</li>
-          <li>{tempUser.location}</li>
+          <li><Icon type="user"/>{user.name}</li>
+          <li><Icon type="envelope"/>{user.email}</li>
+          <li><Icon type="mobile"/>{user.phone}</li>
+          <li><Icon type="globe"/>{user.location}</li>
         </ul>
       </div>
     </div>
   )}
 }
+
+
   
 
 
