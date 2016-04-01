@@ -1,27 +1,25 @@
 // Javascript Entry Point
-
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './app';
-import $ from 'jquery';
+import UserDetails from './user_details';
 
-function renderApp() {
+const tempUser = {
+      name: 'Fred Jones',
+      email: 'freddyj@yahoo.com',
+      phone: '404-333-2673',
+      location: 'Atlanta, GA',
+      photo: 'http://pngimg.com/upload/face_PNG5660.png',
+      id: 5
+    }
 
-  ReactDOM.render(
-    <App/>,
-    document.querySelector(".app")
-  );
+function clicked() {
+  alert('clicked')
 }
 
-// function renderPage(cat) {  
-//   ReactDOM.render(
-//     <Page onSelect={renderApp} octo={cat}/>,
-//     document.querySelector(".app")
-//   )
-// }
+ReactDOM.render(
 
-renderApp();
+  <UserDetails tempUser={tempUser} goBack={clicked}/>,
+  document.querySelector('.app')
 
+  )
 
- // onSelect={renderPage}
- //paste line 25 back to line 10 after App if needed
