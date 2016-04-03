@@ -18,10 +18,10 @@ export default class UserList extends Component {
 
     getUser(user) {
       let { onSelect } = this.props;
-      
+
     return (
-    <li key={user.id} onClick={onSelect.bind(null, user)}>
-      {user.name}</li>
+    <li className="user-list-items" key={user.id} onClick={onSelect.bind(null, user)}>
+      <img className="list-view-images" src={user.photo} alt={user.name}/>{user.name}</li>
     )}
   
 
@@ -29,9 +29,12 @@ export default class UserList extends Component {
 
     let { users } = this.props;
     return (
+      <div>
+      <h3>Contact List</h3>
       <ul>
       {users.map(::this.getUser)}
       </ul>
+      </div>
       )
   }
 
