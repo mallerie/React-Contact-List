@@ -26,7 +26,7 @@ export default class UserList extends Component {
            onClick={onSelect.bind(null, user)}/>
       {user.name}
       <button onClick={onDelete.bind(null, user)}>
-        <Icon id="delete-button" type="trash-o"/>
+        <Icon id="delete-button" type="minus-circle"/>
       </button>  
     </li>
     

@@ -27,7 +27,6 @@ function renderUserList() {
     document.querySelector('.app')
 
     )
-
   }
 
 
@@ -48,7 +47,8 @@ function addUserAndRenderUserList(newItem) {
 function renderFormView() {
 ReactDOM.render(
 
-  <FormView onAdd={addUserAndRenderUserList}/>
+  <FormView 
+    onAdd={addUserAndRenderUserList}/>
   , document.querySelector('.app')
   )  
 }
