@@ -1,23 +1,21 @@
-import React, { Component, PropTypes } from 'react';
+import React, { Component } from 'react';
 import SimpleSerialForm from 'react-simple-serial-form';
 import Dropzone from 'react-dropzone';
+import users from './user_data';
+import { hashHistory } from 'react-router';
 
 export default class FormView extends Component {
-  static propTypes = {
-    onAdd: PropTypes.func.isRequired
-  }
-
   constructor(props) {
     super(props); 
       this.state = { 
-        preview: 'http://sunfieldfarm.org/wp-content/uploads/2014/02/profile-placeholder.png'
+        preview: './images/add-user.png'
       }
     
   }
 
-  dataHandler (formData) {
-    let { onAdd } = this.props;
-    this.props.onAdd(formData);
+  dataHandler (data) {
+    users.push(data);
+    hashHistory.push('/');
   }
 
   dropHandler ([file]) {
@@ -31,41 +29,34 @@ export default class FormView extends Component {
     
     return (
       <div className="form-view">
-        <h3>Add Contact</h3>
-        <SimpleSerialForm onData={::this.dataHandler}>
-          <div className="form-item">
-            <label>
-            Full Name
-            <input type="text" name="name"/>
-            </label>
-          </div>
-          <div className="form-item">
-            <label>
-            Email
-            <input type="email" name="email"/>
-            </label>
-          </div>
-          <div className="form-item">
-            <label>
-            Phone
-            <input type="tel" name="phone"/>
-            </label>
-          </div>
-          <div className="form-item">
-            <label>
-            Location
-            <input type="text" name="location"/>
-            </label>
-          </div>
-          <div>
-          <Dropzone onDrop={::this.dropHandler}>
-            Drop Photo Here 
-            <img src={this.state.preview}/>
-            <input type="hidden" name="photo" value={this.state.preview}/> 
-          </Dropzone>
-        </div>
-        <button>Add Contact</button>
-        </SimpleSerialForm>
+        <h3>New Contact</h3>
+        <div className="form-wrapper">
+          <SimpleSerialForm onData={::this.dataHandler}>
+            <div className="form-item">
+              <input type="text" name="name" placeholder="Full Name"/>
+            </div>
+
+            <div className="form-item">
+              <input type="email" name="email" placeholder="Email"/>
+            </div>
+
+            <div className="form-item">
+              <input type="tel" name="phone" placeholder="Telephone"/>
+            </div>
+
+            <div className="form-item">
+              <input type="text" name="location" placeholder="City & State"/>
+            </div>
+            <div className="drop">
+              <Dropzone className="drop-zone" onDrop={::this.dropHandler}>
+                Drop Photo Here 
+                <img src={this.state.preview}/>
+                <input type="hidden" name="photo" value={this.state.preview}/> 
+              </Dropzone>
+            </div>
+          <button>Add Contact</button>
+          </SimpleSerialForm>
+        </div>  
       </div>
       )
   }

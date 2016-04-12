@@ -1,31 +1,32 @@
-import React, {PropTypes, Component } from 'react';
-import USER_SHAPE from './shape';
+import React, { Component } from 'react';
 import users from './user_data';
 import Icon from './icon';
-
-// import tempUser from './index';
+import cookie from 'js-cookie';
+import { Link, hashHistory } from 'react-router';
 
 
 export default class UserList extends Component {
-  
-  static propTypes = {
-    users: PropTypes.arrayOf(USER_SHAPE), 
-    onSelect: PropTypes.func.isRequired,
-    onAdd: PropTypes.func.isRequired,
-    onDelete: PropTypes.func.isRequired
-  }
 
+
+    deleteUser(selectedUser) {
+      var spliceUser = users.indexOf(selectedUser);
+      var isConfirmed = window.confirm(`You are about to delete the user you selected, are you sure you want to do this?`);
+    if (isConfirmed) {
+      users.splice(spliceUser, 1);
+      hashHistory.push('/');   
+    }
+  
+}
     getUser(user) {
-      let { onSelect, onDelete } = this.props;
-    
     return (  
     <li className="user-list-items" key={user.id}>
-      <img className="list-view-images" 
-           src={user.photo} 
-           alt={user.name} 
-           onClick={onSelect.bind(null, user)}/>
+      <Link to="/user-details">
+        <img className="list-view-images" 
+          src={user.photo} 
+          alt={user.name}/>
+      </Link>
       {user.name}
-      <button onClick={onDelete.bind(null, user)}>
+      <button onClick={::this.deleteUser}>
         <Icon id="delete-button" type="minus-circle"/>
       </button>  
     </li>
@@ -34,24 +35,18 @@ export default class UserList extends Component {
   
 
   render() {
-
-    let { users, onAdd } = this.props;
     return (
       <div>
         <div className="contact-list-header-button">
           <h3>
             Contact List
           </h3>
-          <button id="add-button" 
-              onClick={onAdd}><Icon type="user-plus"/>
-          </button>
+          <Link to="/form-view"><Icon type="user-plus"/></Link>
         </div>  
           
-        
-      
-      <ul>
-      {users.map(::this.getUser)}
-      </ul>
+        <ul>
+        {users.map(::this.getUser)}
+        </ul>
       </div>
       )
   }
