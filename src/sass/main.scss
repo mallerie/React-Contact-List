@@ -2,10 +2,12 @@
 @import "font-awesome"; 
 
 //////////////////////Styles applying to the app
+
 body {
-  margin: 10px;
+  margin: 0px;
   padding: 0;
 }
+
 .app {
   width: 40%;
   margin: auto;
@@ -19,48 +21,58 @@ ul {
 li {
   list-style-type: none;
 }
+
+
+////////////////////// MAIN VIEW 
+////////////////////
+////////////////////
+.main-header {
+  border-radius: 20px 20px 0 0;
+  background-color: #43598a;
+  box-shadow: inset 0px -2px 5px 1px rgba(0,0,0,0.49); 
+  height: 80px;
+  h1 {
+  margin: 0;
+  padding: 15px 0 0 20px;
+  align-items: center;
+  font-family: 'Hind', sans-serif;
+  font-size: 2em;
+  color: white; 
+  }
+}
+.main-content-w-aside {
+  display: flex;
+  background-color: #fff;
+  nav {
+    min-width: 100px;
+    background-color: #cbcde2;  
+    a {
+      display: block;
+      margin: 40px;
+      i {
+        font-size: 2em;
+        margin: auto;  
+        color: #1a1a1b;    
+      }
+    }   
+  }
+  .children {
+    flex-grow: 1;
+
+  }
+}
+
 ////////////////////// LIST VIEW 
 ////////////////////
 ////////////////////
 
-.contact-list-header-button {
-  position: relative;
-  box-shadow: inset 0px -2px 5px 1px rgba(0,0,0,0.49); 
-  display: flex;
-  background-color: #81BC39;
-  height: 80px;
-  justify-content: space-between;
-  border-radius: 20px 20px 0 0;
-  i {
-    position: absolute;
-    top: 15px;
-    right: 40px;
-    color: white;
-    font-size: 2em;
-  }
-  #add-button {
-    position: absolute;
-    background: none;
-    border: none;
-    color: white;
-    font-size: 1.5em;
-    }
-  h3 {
-    margin: 0;
-    padding: 15px 0 0 20px;
-    align-items: center;
-    font-family: 'Hind', sans-serif;
-    font-size: 2em;
-    color: white; 
-  }  
-}
 
 .list-view-images {
-  height: 55px;
-  width: 55px;
+  height: 65px;
+  width: 65px;
   align-items: center;
   border-radius: 100%;
-  margin: 0 20px 0 20px;
+  margin: 10px 20px 10px 20px;
 }
 
 .user-list-items {
@@ -108,7 +120,7 @@ li {
 }
 
 .avatar {
-  background-color: #A7D076;
+  background-color: #a37b53;
   height: 200px;
   width: 100%;
   display: flex;
@@ -126,7 +138,7 @@ li {
   font-weight: lighter;
   }
   img {
-  width: 100px;
+  width: 200px;
   border-radius: 100%;
   }
 }
@@ -166,7 +178,7 @@ li {
     }
   }
   
-  h3 {
+  h1 {
     box-shadow: inset 0px -2px 5px 1px rgba(0,0,0,0.49);
     background-color: #81BC39;
     height: 80px;

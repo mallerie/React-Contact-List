@@ -9,8 +9,7 @@ export default class FormView extends Component {
     super(props); 
       this.state = { 
         preview: './images/add-user.png'
-      }
-    
+      } 
   }
 
   dataHandler (data) {
@@ -21,7 +20,7 @@ export default class FormView extends Component {
   dropHandler ([file]) {
     let { preview } = file;
 
-    this.setState({preview});
+    this.setState({preview: file.preview});
   }
 
   render() {
